@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/java8-in-action/java8-in-action.iml" filepath="$PROJECT_DIR$/java8-in-action/java8-in-action.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-algorithm/learn-algorithm.iml" filepath="$PROJECT_DIR$/learn-algorithm/learn-algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/learn-java.iml" filepath="$PROJECT_DIR$/.idea/learn-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn-redis/learn-redis.iml" filepath="$PROJECT_DIR$/learn-redis/learn-redis.iml" />
+    </modules>
+  </component>
+</project>
