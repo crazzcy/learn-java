@@ -8,9 +8,12 @@ package org.chenyang.study.redis;
 public class TestJedis {
 
     public static void main(String[] args) {
-        System.out.println("Test Jedis");
-        int a = 8;
-        a = a++;
-        System.out.println(a);
+
+        try {
+            System.out.println("方法开始咯");
+            throw new Exception("测试异常");
+        }catch(Exception e) {
+            System.out.println("catch块:" + e.toString());
+        }
     }
 }
