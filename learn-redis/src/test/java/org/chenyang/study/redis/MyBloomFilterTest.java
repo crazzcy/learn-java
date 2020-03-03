@@ -1,5 +1,7 @@
 package org.chenyang.study.redis;
 
+import com.google.common.hash.BloomFilter;
+import com.google.common.hash.Funnels;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -22,7 +24,7 @@ public class MyBloomFilterTest {
         Assert.assertTrue(myBloomFilter.check("3"));
         Assert.assertTrue(myBloomFilter.check("5"));
         Assert.assertTrue(myBloomFilter.check("9999"));
-        Assert.assertTrue(myBloomFilter.check("10002")); // 这里其实是不存在的，当数组小于16时候，非常容易出现误报
+        //Assert.assertTrue(myBloomFilter.check("10002")); // 这里其实是不存在的，当数组小于16时候，非常容易出现误报
         long end = System.currentTimeMillis();
 
         System.out.println("总的检查耗时大约" + (end - start));

@@ -16,11 +16,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>28.2-jre</version>
-        </dependency> -->
+            <version>25.1-jre</version>
+        </dependency>
     </dependencies>
 
 </project>
