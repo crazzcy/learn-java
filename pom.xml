@@ -13,6 +13,7 @@
         <module>learn-redis</module>
         <module>learn-algorithm</module>
         <module>java8-in-action</module>
+        <module>concurrency</module>
     </modules>
 
     <properties>
