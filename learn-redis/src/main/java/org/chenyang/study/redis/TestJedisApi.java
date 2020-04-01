@@ -44,6 +44,30 @@ public class TestJedisApi {
 
     /**
      * 测试jedis 字符串类型API
+     *
+     * 目前官网上字符串命令共24个
+     *
+     *  set/get
+     *  incr/decr
+     *  incrBy/decrBy
+     *  incrByFloat/decrByFloat
+     *  append
+     *  strlen
+     *  setrange/getrange
+     *  setbit/getbit
+     *  bitcount: 返回二进制里为1的数量
+     *  bitop: 两个bit字段每一bit做AND/OR/XOR运算
+     *  bitpos: Return the position of the first bit set to 1 or 0 in a string.
+     *  bitfield: c语言中的位域
+     *
+     *  getset：原子操作去塞一个值，并返回旧值。如果旧值不是string类型的，则报错。
+     *
+     *  mset/mget：批量设置和返回指定key的value，没有则返回Nil，这个命令永不会报错。
+     *
+     *  setex/psetex: 设置一个key并指定多久之后key过期。psetex exactly like setex, difference is expired time is specified in milliseconds instead of seconds.
+     *
+     *  setnx/msetnx: SET if Not eXist，可用于分布式锁。msetnx: 原子级批量setnx，所有都被设置进去了，返回1，否则0。
+     *
      * @param jedis jedis 客户端
      */
     public static void testJedisStringApi(Jedis jedis) {
@@ -82,6 +106,8 @@ public class TestJedisApi {
         System.out.println("setrange之后的字符串长度:" + jedis.setrange("name", 1, "991"));
         System.out.println("setrange之后的字符串为:" + jedis.get("name"));
 
+        System.out.println("strlen计算此时的字符串的长度为：" + jedis.strlen("name"));
+
         System.out.println("setbit/getbit 实用用法，可用于网站用户日活，打卡，文章、视频是否观看过。参考博客 https://www.cnblogs.com/K-artorias/p/8863286.html");
         // setbit
         System.out.println("设置bit字段第8位为false: " + jedis.setbit("bit", 8L, false));
@@ -117,7 +143,7 @@ public class TestJedisApi {
         System.out.println("bitpos key=bit2中第一个为true的位置: " + jedis.bitpos("bit2", true));
 
         //jedis.bitfield get
-        Long getbitResult = jedis.bitfield("bit", "get", "u30", "0").get(0);
+        Long getbitResult = jedis.bitfield("bit2", "get", "u30", "0").get(0);
         System.out.println("bitfield: get bit=" + getbitResult);
 
         //jedis.bitfield set
@@ -125,6 +151,27 @@ public class TestJedisApi {
 
         //jedis.bitfield incrby
         //System.out.println("bitfield: set bit=" + jedis.bitfield("bit", "set", "u30", "0", "1"));
+        System.out.println( "set again getset:" + jedis.set("getset","setttt"));
+        System.out.println("getset 返回：" + jedis.getSet("getset", "testgetset"));
+        System.out.println("getset 现在的值：" + jedis.get("getset"));
+
+        System.out.println("setex操作：" + jedis.setex("setex", 100, "seteexxxx"));
+        System.out.println("setex里面的值：" + jedis.get("setex") + ",有效时间为" + jedis.ttl("setex"));
+
+        System.out.println("psetex操作：" + jedis.setex("setex", 100, "seteexxxx"));
+        System.out.println("psetex里面的值：" + jedis.get("setex") + ",有效时间为" + jedis.ttl("setex"));
+
+
+        // 成功返回1
+        System.out.println("setnx操作1：" + jedis.setnx("setnx", "setnx1"));
+        // 失败返回0
+        System.out.println("setnx操作2：" + jedis.setnx("setnx", "setnx2"));
+        // 返回setnx1，这个命令可以用于分布式锁，返回1则拿到锁，拿到0，则未获取到锁。
+        System.out.println("setnx操作2：" + jedis.get("setnx"));
+
+        // 如果有一个没成功，则全部都不成功，下面返回的值就是null。
+        System.out.println("msetnx:" + jedis.msetnx("hello1", "world1", "hello2", "world2", "setnx", "setnx3"));
+        System.out.println("get value: " + jedis.get("hello1") + ";" + jedis.get("hello2"));
 
     }
 
