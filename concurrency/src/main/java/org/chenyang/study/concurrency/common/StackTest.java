@@ -1,6 +1,6 @@
 package org.chenyang.study.concurrency.common;
 
-import lock.LockTest;
+import org.chenyang.study.concurrency.lock.LockTest;
 
 /**
  * @author ChenYang
