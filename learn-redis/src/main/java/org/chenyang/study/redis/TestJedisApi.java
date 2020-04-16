@@ -23,7 +23,9 @@ public class TestJedisApi {
         // JedisListApi.testJedisListApi(jedis);
 
         // 测试Set API
-        JedisSetApi.testJedisSetApi(jedis);
+        // JedisSetApi.testJedisSetApi(jedis);
+
+        JedisHashApi.testJedisHashApi(jedis);
     }
 
 

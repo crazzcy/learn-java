@@ -1,7 +1,7 @@
 package org.chenyang.study.redis;
 
-import redis.clients.jedis.BinaryClient;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.ListPosition;
 
 /**
  * redis list api
@@ -62,8 +62,8 @@ public class JedisListApi {
 
         System.out.println("ltrim: "+ jedis.lrem("rlist", -2, "hoho2"));
 
-        System.out.println("linsert before: "+ jedis.linsert("rlist", BinaryClient.LIST_POSITION.BEFORE, "hoho7","hohoinsertbefore"));
-        System.out.println("linsert after: "+ jedis.linsert("rlist", BinaryClient.LIST_POSITION.AFTER, "hoho7","hohoinsertafter"));
+        System.out.println("linsert before: "+ jedis.linsert("rlist", ListPosition.BEFORE, "hoho7","hohoinsertbefore"));
+        System.out.println("linsert after: "+ jedis.linsert("rlist", ListPosition.AFTER, "hoho7","hohoinsertafter"));
         System.out.println("print rlist: " + jedis.lrange("rlist", 0, -1));
 
         System.out.println("rlist len: " + jedis.llen("rlist"));
