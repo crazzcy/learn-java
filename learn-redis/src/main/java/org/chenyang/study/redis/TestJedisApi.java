@@ -25,7 +25,11 @@ public class TestJedisApi {
         // 测试Set API
         // JedisSetApi.testJedisSetApi(jedis);
 
-        JedisHashApi.testJedisHashApi(jedis);
+        // 测试Hash API
+        // JedisHashApi.testJedisHashApi(jedis);
+
+        // 测试ZSet API
+        JedisZSetApi.testJedisZSetApi(jedis);
     }
 
 
@@ -48,8 +52,12 @@ public class TestJedisApi {
     private static void resetAll(Jedis jedis) {
         System.out.println("即将清理redis的数据，共" + jedis.dbSize() + "条数据");
         // jedis.del("name", "int", "float", "bit", "bit2", "bitop");
-        //jedis.del("list", "rlist");
-        jedis.del("set", "set2");
+        // jedis.del("list", "rlist");
+        // jedis.del("set", "set2");
+
+        // jedis.del("hash", "hash2");
+        jedis.del("zset-key", "zset-key2", "zset-key3");
+
         // 清空所有的key
         jedis.flushAll();
         System.out.println("清理所有数据完毕");
