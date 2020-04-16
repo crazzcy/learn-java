@@ -1,10 +1,10 @@
 package org.chenyang.study.redis;
 
 import redis.clients.jedis.BinaryClient;
-import redis.clients.jedis.BitOP;
 import redis.clients.jedis.Jedis;
 
 /**
+ * redis list api
  * @author : ChenYang
  * @date : 2020-04-01 10:02 下午
  * @since :
