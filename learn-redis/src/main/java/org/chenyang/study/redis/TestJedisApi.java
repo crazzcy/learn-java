@@ -1,8 +1,6 @@
 package org.chenyang.study.redis;
 
-import redis.clients.jedis.BinaryClient;
-import redis.clients.jedis.BitOP;
-import redis.clients.jedis.Jedis;
+import redis.clients.jedis.*;
 
 /**
  * @author : ChenYang
@@ -13,9 +11,9 @@ public class TestJedisApi {
 
     public static void main(String[] args) {
         // 连接服务器
-        Jedis jedis = setup();
+        // Jedis jedis = setup();
         // 重置所有字段
-        resetAll(jedis);
+        // resetAll(jedis);
         // 测试String API
         // JedisStringApi.testJedisStringApi(jedis);
 
@@ -29,7 +27,11 @@ public class TestJedisApi {
         // JedisHashApi.testJedisHashApi(jedis);
 
         // 测试ZSet API
-        JedisZSetApi.testJedisZSetApi(jedis);
+        // JedisZSetApi.testJedisZSetApi(jedis);
+
+        // 测试pub&sub的API
+        JedisPool jedisPool = new JedisPool();
+        JedisPubSubApi.testJedisPubSubApi(jedisPool);
     }
 
 
@@ -43,6 +45,27 @@ public class TestJedisApi {
         System.out.println("redis连接成功");
         System.out.println("服务正在运行PING:" + jedis.ping());
         return jedis;
+    }
+
+    /**
+     * 建立jedis连接池
+     * @return
+     */
+    private static JedisPool setupPool() {
+        String ip = "localhost";
+        int port = 6379;
+        int timeout = 2000;
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        jedisPoolConfig.setMaxTotal(10);
+        jedisPoolConfig.setMaxIdle(10);
+        jedisPoolConfig.setMinIdle(1);
+        jedisPoolConfig.setTestOnBorrow(false);
+        jedisPoolConfig.setTestOnReturn(true);
+
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig, ip, port, timeout);
+
+        System.out.println("redis连接池创建成功");
+        return jedisPool;
     }
 
     /**
