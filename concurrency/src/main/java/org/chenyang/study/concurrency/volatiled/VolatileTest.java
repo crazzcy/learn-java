@@ -1,4 +1,4 @@
-package org.chenyang.study.concurrency;
+package org.chenyang.study.concurrency.volatiled;
 
 /**
  * volatile 测试类

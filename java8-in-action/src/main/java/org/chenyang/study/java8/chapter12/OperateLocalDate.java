@@ -2,6 +2,7 @@ package org.chenyang.study.java8.chapter12;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
@@ -93,9 +94,22 @@ public class OperateLocalDate {
         System.out.println(s4);
     }
 
+    private static void testH() {
+        LocalDateTime localDateTime = LocalDateTime.of(2020, 4, 9, 12, 56, 32);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+
+        // 开始时间是12小时之前，结束时间是12小时之后
+        String startDateTime = localDateTime.minusHours(12).format(formatter);
+        String endDateTime = localDateTime.plusHours(12).format(formatter);
+
+        System.out.println(startDateTime);
+        System.out.println(endDateTime);
+    }
+
     public static void main(String[] args) {
         //testWith();
         //testTemporalAdjuster();
-        testDateFormatter();
+        //testDateFormatter();
+        testH();
     }
 }

@@ -1,4 +1,4 @@
-package org.chenyang.study.concurrency;
+package org.chenyang.study.concurrency.volatiled;
 
 /**
  * volatile并不完全具有原子性，对于复合操作其仍存在线程不安全的问题
