@@ -8,17 +8,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author ChenYang
- * @date 2020-04-28 20:32
+ * @date 2020年4月29日11:04:32
  **/
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TestTT {
+public class TestSomeT {
 
     @Autowired
-    TT tt;
+    SomeT1 someT1;
 
     @Test
     public void test01(){
-        tt.outerMethod();
+        someT1.t1();
     }
 }

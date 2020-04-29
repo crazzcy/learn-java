@@ -1,8 +1,6 @@
 package org.chenyang.spring.transactional;
 
-import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,35 +13,18 @@ import java.sql.Statement;
 
 /**
  * @author ChenYang
- * @date 2020-04-28 20:25
+ * @date 2020-04-29 11:01
  **/
 @Component
-public class TT {
+public class SomeT2 {
 
     @Autowired
     DataSource dataSource;
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
-    public void outerMethod() {
-        System.out.println("This is outerMethod..");
-        try {
-            Connection connection = dataSource.getConnection();
-            Statement statement  = connection.createStatement();
-            String sql = "select payment_id, amount from a_payment_test";
-            ResultSet rs=  statement.executeQuery(sql);
-            while(rs.next()) {
-                // 外层方法执行一半，跑跑内层方法
-                System.out.println("paymentId = " + rs.getString(1) + ",amount=" + rs.getString(2));
-                innerMethod(rs.getString(1) );
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Transactional(propagation = Propagation.NEVER, rollbackFor = Exception.class)
-    public void innerMethod(String paymentId) {
-        System.out.println("This is innerMethod..");
+    public void t2(String paymentId) {
+
+        System.out.println("This is t2 Method..");
         try {
             Connection connection = dataSource.getConnection();
             Statement statement  = connection.createStatement();
@@ -56,7 +37,5 @@ public class TT {
             e.printStackTrace();
         }
 
-
     }
-
 }
