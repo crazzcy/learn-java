@@ -1,8 +1,13 @@
 package org.chenyang.study.redis;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.ScanParams;
+import redis.clients.jedis.ScanResult;
+
+import java.util.Arrays;
 
 /**
+ * redis set api
  * @author : ChenYang
  * @date : 2020-04-01 10:02 下午
  * @since :
@@ -73,5 +78,24 @@ public class JedisSetApi {
 
         System.out.println("sunion smembers: " + jedis.smembers("set3"));
 
+        // sscan
+        // SCAN 是一个基于游标的迭代器。这意味着在每次调用该命令时，服务器都会返回一个更新的游标，用户需要在下一次调用中将其用作游标参数。
+        // 当光标设置为0时开始迭代，当服务器返回的光标为0时终止迭代。
+        ScanResult<String> scanResult = jedis.sscan("set","0");
+        System.out.println("sscan: " + Arrays.toString(scanResult.getResult().toArray()));
+
+        // Scan with scan params
+
+        // count
+        // default value is 10
+        ScanParams scanParamsCount = new ScanParams().count(2);
+        ScanResult<String> scanCountResult = jedis.sscan("set","0", scanParamsCount);
+        System.out.println("scan count result: " + Arrays.toString(scanCountResult.getResult().toArray()));
+
+        // match
+        ScanParams scanParamsMatch = new ScanParams().match("*3");
+
+        ScanResult<String> scanMatchResult = jedis.sscan("set","0", scanParamsMatch);
+        System.out.println("scan match result: " + Arrays.toString(scanMatchResult.getResult().toArray()));
     }
 }
