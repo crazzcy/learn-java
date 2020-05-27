@@ -30,7 +30,8 @@ public class TestJedisApi {
         // JedisZSetApi.testJedisZSetApi(jedis);
 
         // 测试pub&sub的API
-        JedisPool jedisPool = new JedisPool();
+        JedisPool jedisPool = setupPool();
+
         JedisPubSubApi.testJedisPubSubApi(jedisPool);
     }
 
