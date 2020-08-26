@@ -1,6 +1,7 @@
 package org.chenyang.study.java8.chapter12;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 
 /**
@@ -79,7 +80,13 @@ public class TestLocalDateTime {
         Period twoYearsThreeMonthsFourDays = Period.of(2,3,4);
     }
 
+    private static void printNow() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String s3 = LocalDateTime.now().format(formatter);
+        System.out.println(s3);
+    }
+
     public static void main(String[] args) {
-        combineDateAndTime();
+        printNow();
     }
 }

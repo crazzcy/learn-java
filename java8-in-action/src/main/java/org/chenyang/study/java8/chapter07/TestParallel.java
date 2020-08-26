@@ -1,9 +1,12 @@
 package org.chenyang.study.java8.chapter07;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
@@ -82,6 +85,10 @@ public class TestParallel {
         total+=value;
     }
 
+    private static int[] parseResultType(int inputResultType) {
+        return IntStream.rangeClosed(0, 3).filter(resultTypeArgs -> (inputResultType & (1 << resultTypeArgs)) > 0).toArray();
+    }
+
     /**
      * 使用原子变量，非阻塞算法，解决竞态问题
      * @param value
@@ -89,20 +96,25 @@ public class TestParallel {
     private static void add2(long value) {
         total2.getAndAdd(value);
     }
+//
+//    public static void main(String[] args) {
+//        //System.out.println(sequentialSum(8));
+//        //System.out.println(sequentialSumParallel(8));
+//        testFunctionRunTime(TestParallel::sequentialSum, TestParallel::sequentialSumParallel2, 200_000_000L);
+//        //wrongUseParallel();
+//        //System.out.println(total);
+//
+//        long[] numbers = LongStream.rangeClosed(1, 200_000_000L).toArray();
+//        ForkJoinTask<Long> task = new ForkJoinSumCalculator(numbers);
+//        long start = System.currentTimeMillis();
+//        long result = new ForkJoinPool().invoke(task);
+//        long end = System.currentTimeMillis();
+//        System.out.println("执行时间：" + (end-start));
+//        System.out.println("结果：" + result);
+//    }
 
     public static void main(String[] args) {
-        //System.out.println(sequentialSum(8));
-        //System.out.println(sequentialSumParallel(8));
-        testFunctionRunTime(TestParallel::sequentialSum, TestParallel::sequentialSumParallel2, 200_000_000L);
-        //wrongUseParallel();
-        //System.out.println(total);
-
-        long[] numbers = LongStream.rangeClosed(1, 200_000_000L).toArray();
-        ForkJoinTask<Long> task = new ForkJoinSumCalculator(numbers);
-        long start = System.currentTimeMillis();
-        long result = new ForkJoinPool().invoke(task);
-        long end = System.currentTimeMillis();
-        System.out.println("执行时间：" + (end-start));
-        System.out.println("结果：" + result);
+        System.out.println(Arrays.toString(parseResultType(7)));
+        System.out.println(1&1);
     }
 }
