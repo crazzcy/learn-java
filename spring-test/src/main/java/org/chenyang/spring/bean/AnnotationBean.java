@@ -10,7 +10,7 @@ import javax.annotation.PreDestroy;
  * @date : 2020-08-25 5:28 下午
  * @since :
  */
-@Component
+//@Component
 public class AnnotationBean {
     @PostConstruct
     public void init() {

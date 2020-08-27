@@ -16,11 +16,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class TestBeanLifeCycle {
 
-    @Autowired
-    AnnotationBean annotationBean;
-
-    @Autowired
-    ImplementsBean implementsBean;
+//    @Autowired
+//    AnnotationBean annotationBean;
+//
+//    @Autowired
+//    ImplementsBean implementsBean;
 
     @Autowired
     SpringBeanCycleConfig springBeanCycleConfig;
@@ -28,7 +28,8 @@ public class TestBeanLifeCycle {
     @Test
     public void test() {
         System.out.println("test start");
-        springBeanCycleConfig.getAppointMethodBean();
+        TestSpringBeanLifeCycle appointMethodBean = springBeanCycleConfig.getBean();
+        appointMethodBean.test();
         System.out.println("test end");
     }
 

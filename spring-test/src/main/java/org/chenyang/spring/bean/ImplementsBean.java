@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @date : 2020-08-25 5:24 下午
  * @since :
  */
-@Component
+//@Component
 public class ImplementsBean implements InitializingBean, DisposableBean {
 
     @Override

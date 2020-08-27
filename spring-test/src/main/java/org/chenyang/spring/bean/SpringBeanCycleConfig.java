@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringBeanCycleConfig {
 
-    @Bean(initMethod = "start", destroyMethod = "end")
-    public AppointMethodBean getAppointMethodBean() {
-        return new AppointMethodBean();
+    @Bean(initMethod = "start", destroyMethod = "end", value = "appointMethodBean")
+    public TestSpringBeanLifeCycle getBean() {
+        return new TestSpringBeanLifeCycle();
     }
 }
