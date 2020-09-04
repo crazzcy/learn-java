@@ -4,7 +4,6 @@ package org.chenyang.spring.aop;
  * @author ChenYang
  * @date 2020-09-04 15:55
  **/
-
 public class MyTourAgent implements Hotel {
 
     @Override

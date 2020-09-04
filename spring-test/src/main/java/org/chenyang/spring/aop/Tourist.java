@@ -1,17 +1,15 @@
 package org.chenyang.spring.aop;
 
 /**
- *
  * @author ChenYang
  * @date 2020-09-04 15:59
  **/
-
 public class Tourist {
 
     /**
      * 游客姓名
      */
-    private String name;
+    private final String name;
 
     public Tourist(String name) {
         this.name = name;
