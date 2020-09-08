@@ -1,4 +1,4 @@
-package org.chenyang.spring.aop;
+package org.chenyang.spring.aop.sp;
 
 /**
  * @author ChenYang
@@ -19,11 +19,17 @@ public class Tourist {
         return name;
     }
 
+    /**
+     * 游客寻找一个酒店
+     */
+    public void findHotel() {
+        Hotel hotelProxy = new HotelProxy();
+        // hotel的实现方法对上层透明
+        hotelProxy.orderRoom(this.getName());
+    }
+
     public static void main(String[] args) {
-
         Tourist tourist = new Tourist("chenyang");
-        MyTourAgent tourAgent = new MyTourAgent();
-        tourAgent.orderRoom(tourist.getName());
-
+        tourist.findHotel();
     }
 }

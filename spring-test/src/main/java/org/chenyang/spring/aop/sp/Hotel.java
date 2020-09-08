@@ -1,7 +1,7 @@
-package org.chenyang.spring.aop;
+package org.chenyang.spring.aop.sp;
 
 /**
- * 酒店服务接口
+ * 酒店接口
  * @author ChenYang
  */
 public interface Hotel {
