@@ -9,7 +9,6 @@ import sun.misc.ProxyGenerator;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Proxy;
-import java.util.Arrays;
 
 /**
  * @author : ChenYang
@@ -32,9 +31,9 @@ public class JDKProxyTest {
 
     @Test
     public void testWriteProxyClass() throws IOException {
-        byte[] proxyClassBytes = ProxyGenerator.generateProxyClass("$Proxy1", new Class[]{ ISubObject.class }, 1);
+        byte[] proxyClassBytes = ProxyGenerator.generateProxyClass("Proxy1", new Class[]{ ISubObject.class }, 1);
 
-        FileOutputStream fileOutputStream = new FileOutputStream("/Users/chenyang/Downloads/$Proxy1.class");
+        FileOutputStream fileOutputStream = new FileOutputStream("/Users/chenyang/Downloads/Proxy1.class");
         fileOutputStream.write(proxyClassBytes);
         fileOutputStream.flush();
         fileOutputStream.close();

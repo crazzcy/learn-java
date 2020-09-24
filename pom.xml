@@ -15,6 +15,7 @@
         <module>java8-in-action</module>
         <module>concurrency</module>
         <module>spring-test</module>
+        <module>jvm</module>
     </modules>
 
     <properties>
