@@ -16,6 +16,7 @@
         <module>concurrency</module>
         <module>spring-test</module>
         <module>jvm</module>
+        <module>spring-boot-test</module>
     </modules>
 
     <properties>
