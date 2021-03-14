@@ -24,6 +24,5 @@ public class SpringTestApplication implements CommandLineRunner {
     @Override
     public void run(String... args) {
         run.printHtml();
-
     }
 }

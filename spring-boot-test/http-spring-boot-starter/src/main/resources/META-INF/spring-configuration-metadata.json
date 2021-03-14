@@ -1,0 +1,34 @@
+{"groups": [
+  {
+    "name": "http",
+    "type": "org.chenyang.springboot.starter.HttpProperties",
+    "sourceType": "org.chenyang.springboot.starter.HttpProperties",
+    "sourceMethod": "getUrl()"
+  }
+],"properties": [
+  {
+    "name": "http.url",
+    "type": "java.lang.String",
+    "sourceType": "org.chenyang.springboot.starter.HttpProperties",
+    "description": "http url for get HTML string",
+    "defaultValue": "http://www.baidu.com"
+  }
+],"hints": [
+  {
+    "name": "http.url",
+    "values": [
+      {
+        "value": "http://www.taobao.com",
+        "description": "淘宝首页"
+      },
+      {
+        "value": "http://www.baidu.com",
+        "description": "百度首页"
+      },
+      {
+        "value": "http://www.qq.com",
+        "description": "腾讯首页"
+      }
+    ]
+  }
+]}
