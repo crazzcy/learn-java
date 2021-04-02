@@ -16,11 +16,14 @@
     <modules>
         <module>http-spring-boot-starter</module>
         <module>spring-boot-run</module>
+        <module>spring-session-redis</module>
     </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <spring.boot.version>2.1.4.RELEASE</spring.boot.version>
+
     </properties>
 
     <dependencyManagement>
@@ -28,19 +31,54 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot</artifactId>
-                <version>2.1.4.RELEASE</version>
+                <version>${spring.boot.version}</version>
             </dependency>
 
+            <!-- Spring Boot Web-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!--Spring Boot starter autoconfiguration -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
-                <version>2.1.4.RELEASE</version>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- Spring Data Redis-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- Spring Session Data-->
+            <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-data-redis</artifactId>
+                <version>${spring.boot.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-configuration-processor</artifactId>
-                <version>2.1.4.RELEASE</version>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!--Spring Security -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.47</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
