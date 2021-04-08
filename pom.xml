@@ -17,6 +17,7 @@
         <module>spring-test</module>
         <module>jvm</module>
         <module>spring-boot-test</module>
+        <module>spring-boot-test/spring-session-redis</module>
     </modules>
 
     <properties>
